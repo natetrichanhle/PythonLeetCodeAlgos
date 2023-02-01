@@ -4,17 +4,15 @@ def search(self, nums, target):
         :type target: int
         :rtype: int
         """
-        begin_index = 0
-        end_index = len(nums) - 1
-
-        while begin_index <= end_index:
-            self = begin_index + (end_index - begin_index) // 2
-            midpoint_value = nums[self]
-
+        start = 0
+        end = len(nums) - 1
+        while start < end:
+            midpoint = (start + end) // 2
+            midpoint_value = nums[midpoint]
             if midpoint_value == target:
-                return self
+                return midpoint
             elif target < midpoint_value:
-                end_index = self - 1
+                end = midpoint - 1
             elif target > midpoint_value:
-                begin_index = self + 1
+                start = midpoint + 1
         return -1
