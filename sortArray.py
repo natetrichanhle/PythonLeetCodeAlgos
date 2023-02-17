@@ -22,39 +22,57 @@ class Solution:
 
         # merge sort -> 0(nlogn)
 
-        def mergeSort(arr):
-            # base case 
-            if len(arr) > 1:
-                # to get the mid index
-                mid = len(arr) // 2
-                # to get the left subarray
-                L = arr[:mid]
-                # to get the right subarray
-                R = arr[mid:]
-                # recursion for the L and R arrays
-                mergeSort(L)
-                mergeSort(R)
-                # indexes of L (i), R(j), and the arr(k)
-                i, j, k = 0, 0, 0
-                # merge the two sorted halves into the original array
-                while i < len(L) and j < len(R):
-                    if L[i] <= R[j]:
-                        arr[k] = L[i]
-                        i += 1
-                    else:
-                        arr[k] = R[j]
-                        j += 1
-                    k += 1
+        # def mergeSort(arr):
+        #     # base case 
+        #     if len(arr) > 1:
+        #         # to get the mid index
+        #         mid = len(arr) // 2
+        #         # to get the left subarray
+        #         L = arr[:mid]
+        #         # to get the right subarray
+        #         R = arr[mid:]
+        #         # recursion for the L and R arrays
+        #         mergeSort(L)
+        #         mergeSort(R)
+        #         # indexes of L (i), R(j), and the arr(k)
+        #         i, j, k = 0, 0, 0
+        #         # merge the two sorted halves into the original array
+        #         while i < len(L) and j < len(R):
+        #             if L[i] <= R[j]:
+        #                 arr[k] = L[i]
+        #                 i += 1
+        #             else:
+        #                 arr[k] = R[j]
+        #                 j += 1
+        #             k += 1
 
-                # if one of the halves have elements still remaining, we want to just add those values into the sorted array
-                while i < len(L):
-                    arr[k] = L[i]
-                    i += 1
-                    k += 1
-                while j < len(R):
-                    arr[k] = R[j]
-                    j += 1
-                    k += 1
-        # recursion for nums
-        mergeSort(nums)
-        return nums
+        #         # if one of the halves have elements still remaining, we want to just add those values into the sorted array
+        #         while i < len(L):
+        #             arr[k] = L[i]
+        #             i += 1
+        #             k += 1
+        #         while j < len(R):
+        #             arr[k] = R[j]
+        #             j += 1
+        #             k += 1
+        # # recursion for nums
+        # mergeSort(nums)
+        # return nums
+
+        # quick sort -> 0(nlogn) 
+        def quickSort(nums):
+            # base case
+            if len(nums) <= 1: return nums
+            # pick a random pivot
+            pivot = random.choice(nums)
+            # instatiated variables to append values in if they're less than, equal to, or greater than the value in nums
+            less_than, equal_to, greater_than = [], [], []
+
+            # partition
+            for val in nums:
+                if val < pivot: less_than.append(val)
+                elif val > pivot: greater_than.append(val)
+                else: equal_to.append(val)
+            # merging the lists starting from what's less than the pivot, what's equal, then what's greater than the pivot
+            return quickSort(less_than) + equal_to + quickSort(greater_than)
+        return quickSort(nums)
