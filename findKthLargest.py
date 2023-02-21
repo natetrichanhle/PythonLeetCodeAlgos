@@ -1,16 +1,22 @@
-def findKthLargest(self, nums: List[int], k: int) -> int:
-        def quickSort(nums):
-            if len(nums) <= 1: return nums
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        # built in method & more efficient
+        nums.sort()
+        return nums[-k]
 
-            pivot = random.choice(nums)
+        # # Quick Sort Solution
+        # def quickSort(nums):
+        #     if len(nums) <= 1: return nums
 
-            less_than, equal_to, greater_than = [], [], []
+        #     pivot = random.choice(nums)
 
-            for val in nums:
-                if val < pivot: less_than.append(val)
-                elif val > pivot: greater_than.append(val)
-                else: equal_to.append(val)
+        #     less_than, equal_to, greater_than = [], [], []
 
-            return quickSort(less_than) + equal_to + quickSort(greater_than)
-        sortedArr = quickSort(nums)
-        return sortedArr[-k]
+        #     for val in nums:
+        #         if val < pivot: less_than.append(val)
+        #         elif val > pivot: greater_than.append(val)
+        #         else: equal_to.append(val)
+
+        #     return quickSort(less_than) + equal_to + quickSort(greater_than)
+        # sortedArr = quickSort(nums)
+        # return sortedArr[-k]
