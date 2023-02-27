@@ -29,3 +29,17 @@ def search(self, nums, target):
             else:
                 return midpoint
         return -1
+
+        # Binary Search 
+
+        left, right = 0, len(nums) - 1
+        while left <= right:
+            midpoint = (left + right) // 2
+            midpoint_value = nums[midpoint]
+            if target < midpoint_value:
+                right = midpoint - 1 
+            elif target > midpoint_value:
+                left = midpoint + 1
+            else:
+                return midpoint
+        return - 1
