@@ -10,6 +10,7 @@ class Solution:
         low, high = 1, n
         while low <= high:
             mid = (low + high) // 2
+            # mid = low + (high - low) // 2 --> this is faster
             if guess(mid) < 0:
                 high = mid - 1
             elif guess(mid) > 0:
