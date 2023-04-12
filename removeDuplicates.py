@@ -25,3 +25,21 @@ class Solution:
                 L += 1
         # return L which at the end of the iterations, is the amount of unqiue values
         return L
+    
+    class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        k = 0
+        for i in range(len(nums)):
+            # if nums[i] isn't equal to the value we're trying to find then we want to move those values to the front of the array
+            if nums[i] != val:
+                nums[k] = nums[i]
+                # increment k by 1 every time nums[i] isnt equal to the value 
+                k += 1
+        # k is the amount of numbers that's left after removing the numbers equal to the value
+        return k
+
+
+        # shorter solution
+        # for i in range(nums.count(val)):
+        #     nums.remove(val)
+        # return len(nums)
